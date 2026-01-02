@@ -4,16 +4,17 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import star from '@/app/assests/c56b33cc-c856-4040-b003-c080d2183a97_removalai_preview.png'
 import axios from 'axios'
+import { UserData } from '..'
 
-const AInput = () => {
+const AInput = ({userId}:{userId:UserData})  => {
     const [topic,settopic] = useState("");
     const generateResponse = async (e: React.FormEvent) => {
     e.preventDefault(); 
-    
-    console.log("🔵 FRONTEND: Starting request for:", topic); 
-
     try {
-      const response = await axios.post("/api/generate", { topic })
+      const response = await axios.post("/api/generate", { topic });
+      
+      const submit =  await axios.post("/api/flashcard", {content: response.data.data, userId:userId})
+      console.log(submit.data.id_flash);
       
       console.log("🔵 FRONTEND: Got response:", response.data.data);
     } catch(error) {
