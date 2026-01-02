@@ -7,12 +7,24 @@ export async function POST(req:Request){
     try {
         const {content, userId} = await req.json();
         console.log(content, userId);
-        const flashcardID = `${userId.id}+${Date.now()}`
+        const flashcardID = `${userId.id}_${Date.now()}`
         const user = userId.id;
         const append = await Flashcard.create({flashcardID, user, content} );
         return NextResponse.json({id_flash:flashcardID}, {status:201});
 
     } catch (error) {
+        console.log(error);
+    }
+}
+export async function GET(request:Request){
+    await connectionToDataBase();
+    try{
+        const { searchParams } = new URL(request.url);
+        const id = searchParams.get("id");
+        console.log(id);
+        const findFlash = await Flashcard.findOne({flashcardID: id}, {content:1, _id:0});
+        return NextResponse.json({content: findFlash}, {status:201});
+    }catch(error){
         console.log(error);
     }
 }

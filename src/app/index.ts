@@ -4,3 +4,7 @@ export type UserData = {
     imageUrl: string,
     hasImage: boolean,
   };
+export type Card={
+  front:string,
+  back:string
+}

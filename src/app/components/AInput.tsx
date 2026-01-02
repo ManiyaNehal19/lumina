@@ -5,8 +5,10 @@ import Image from 'next/image'
 import star from '@/app/assests/c56b33cc-c856-4040-b003-c080d2183a97_removalai_preview.png'
 import axios from 'axios'
 import { UserData } from '..'
+import { useRouter } from 'next/navigation'
 
 const AInput = ({userId}:{userId:UserData})  => {
+    const router = useRouter();
     const [topic,settopic] = useState("");
     const generateResponse = async (e: React.FormEvent) => {
     e.preventDefault(); 
@@ -17,6 +19,8 @@ const AInput = ({userId}:{userId:UserData})  => {
       console.log(submit.data.id_flash);
       
       console.log("🔵 FRONTEND: Got response:", response.data.data);
+      router.push(`/flashcards/${submit.data.id_flash}`)
+
     } catch(error) {
       console.error("🔴 FRONTEND: Error:", error);
     }
@@ -24,7 +28,7 @@ const AInput = ({userId}:{userId:UserData})  => {
   return (
     <div className='w-full flex flex-col items-center justify-center'>
         <div className='flex justify-center items-center flex-col'>
-            <p className='rounded-lg bg-black p-1 text-white text-sm flex justify-center items-center'><Image src={star} alt='star' height={40} width={40}/> AI Powered Learning</p>
+            <p className=' text-white text-sm flex justify-center items-center'><Image src={star} alt='star' height={40} width={40}/> AI Powered Learning</p>
             <h1 className='text-white text-7xl font-bold m-2 text-center'>
               Welcome To <span className='text-[#4ade80]'> Lumina</span>
             </h1>
