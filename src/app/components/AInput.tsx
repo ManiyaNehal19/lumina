@@ -15,9 +15,8 @@ const AInput = ({userId}:{userId:UserData})  => {
     try {
       const response = await axios.post("/api/generate", { topic });
       
-      const submit =  await axios.post("/api/flashcard", {content: response.data.data, userId:userId})
+      const submit =  await axios.post("/api/flashcard", {content: response.data.data, userId:userId, topic:topic})
       console.log(submit.data.id_flash);
-      
       console.log("🔵 FRONTEND: Got response:", response.data.data);
       router.push(`/flashcards/${submit.data.id_flash}`)
 
@@ -26,7 +25,7 @@ const AInput = ({userId}:{userId:UserData})  => {
     }
 }
   return (
-    <div className='w-full flex flex-col items-center justify-center'>
+    <div className='w-full flex flex-col items-center ml-2 mr-2 rounded-lg justify-center'>
         <div className='flex justify-center items-center flex-col'>
             <p className=' text-white text-sm flex justify-center items-center'><Image src={star} alt='star' height={40} width={40}/> AI Powered Learning</p>
             <h1 className='text-white text-7xl font-bold m-2 text-center'>
@@ -54,6 +53,7 @@ const AInput = ({userId}:{userId:UserData})  => {
                 </button>
             </form>
         </div>
+        <p className='text-gray-500 max-w-xl text-center mt-2'>Powered by AI &bull; Generate unlimited flashcards</p>
     </div>
   )
 }

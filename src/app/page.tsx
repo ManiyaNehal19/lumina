@@ -1,5 +1,6 @@
 import AInput from "./components/AInput";
 import { auth, currentUser } from '@clerk/nextjs/server'
+import Deck from "./components/Deck";
 
 export default async function Home() {
   const { isAuthenticated } = await auth()
@@ -14,8 +15,9 @@ export default async function Home() {
     hasImage: !!user?.imageUrl,
   };
   return (
-    <div className="bg-[#110E25] w-full">
+    <div className="w-full">
       <AInput userId= {userData}/>
+      <Deck userId={userData}/>
     </div>
   );
 }

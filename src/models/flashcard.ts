@@ -5,6 +5,7 @@ const flashcardItemSchema = new mongoose.Schema({
 }, { _id: false }); 
 
 const flashcardSchema = new mongoose.Schema({
+    topic:{type:String, required:true},
     flashcardID : {type:String, required:true, unique:true},
     user: { type: String, required: true },
     content: [flashcardItemSchema] 

@@ -8,3 +8,9 @@ export type Card={
   front:string,
   back:string
 }
+export type flashcard={
+  topic:string,
+  content: Card[],
+  createdAt: Date,
+  flashcardID: string
+}

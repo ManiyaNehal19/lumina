@@ -5,11 +5,11 @@ import Flashcard from "@/models/flashcard";
 export async function POST(req:Request){
     await connectionToDataBase();
     try {
-        const {content, userId} = await req.json();
+        const {topic,content, userId} = await req.json();
         console.log(content, userId);
         const flashcardID = `${userId.id}_${Date.now()}`
         const user = userId.id;
-        const append = await Flashcard.create({flashcardID, user, content} );
+        const append = await Flashcard.create({topic,flashcardID, user, content} );
         return NextResponse.json({id_flash:flashcardID}, {status:201});
 
     } catch (error) {
