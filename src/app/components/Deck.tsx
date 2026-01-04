@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import DeckCard from './DeckCard'
 import { flashcard, UserData } from '..'
+import Link from 'next/link'
 
 const Deck = ({ userId }: { userId: UserData }) => { 
     const [cards, setCards] = useState<flashcard[]>([]);
     const id = userId.id
-    const [no_cardLen, setNoCardLen] = useState(0);
 
     useEffect(() => {
         const getCard = async () => {
@@ -31,15 +31,15 @@ const Deck = ({ userId }: { userId: UserData }) => {
         getCard();
     }, [userId]); 
     return (
-        <div className='pl-12 pr-12 mt-6 h-1/2'>
+        <div className='m-5 p-8 '>
             <div className='text-white flex items-center justify-between'>
-                <h2 className='text-4xl text-gray-200 font-bold'>Your Deck</h2>
-                <p className='text-gray-300'>
-                    {cards.length} decks &bull; {no_cardLen} cards
-                </p>
+                <h2 className='text-4xl text-gray-200 font-bold'>Your Recent Deck</h2>
+                
+                <Link href="/alldecks"  className='text-[#4ade80] underline'>View All</Link>
+                
             </div>
-            <div className='h-4/5 overflow-scroll w-full mt-4 flex flex-wrap gap-4'>
-                {cards.map((card) => (
+            <div className='w-full mt-6 grid grid-cols-4 gap-4'>
+                {cards.slice(0, 4).map((card) => (
                     <DeckCard key={card.flashcardID} card={card} />
                 ))}
             </div>

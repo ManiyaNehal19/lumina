@@ -1,11 +1,13 @@
 import Image from "next/image"
 import logo from '@/app/assests/Abstract hexagonal gradient logo design.png'
 
+
 export default function AuthLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  
   return (
     <div className="grid min-h-screen w-full grid-cols-1 lg:grid-cols-2">
       
@@ -26,7 +28,7 @@ export default function AuthLayout({
 
           <h2 className="text-4xl xl:text-5xl font-extrabold leading-tight mb-4">
             Master anything with <br />
-            <span className="text-white/60">AI-powered flashcards</span>
+            <span className="text-white/60"><span className="text-[#4ade80]">AI-powered</span> flashcards</span>
           </h2>
 
           <p className="text-lg text-white/40 mb-12">

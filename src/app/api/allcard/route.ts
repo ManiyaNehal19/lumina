@@ -9,7 +9,7 @@ export async function GET(req:Request) {
         const get_six_card = await Flashcard.find({user:userId}, {  content: 1,
           createdAt: 1,
           topic:1,
-          flashcardID: 1, _id:0}).sort({createdAt:1}).limit(4)
+          flashcardID: 1, _id:0}).sort({createdAt:1})
         return NextResponse.json({message:get_six_card}, {status:201});
     } catch (error) {
         console.log(error)

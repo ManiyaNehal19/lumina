@@ -1,10 +1,15 @@
-import React from 'react'
+"use client"
 import { flashcard } from '..'
 import { Book } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const DeckCard = ({card}:{card:flashcard}) => {
   console.log(card);
   const date = new Date(card.createdAt);
+  const router = useRouter();
+  const routeToFlash = (flashId:string)=>{
+    router.push(`/flashcards/${flashId}`)
+  }
   
   const formattedDate = date.toLocaleDateString('en-US', {
     month: 'short',
@@ -13,7 +18,7 @@ const DeckCard = ({card}:{card:flashcard}) => {
   });
   
     return (
-  <div className="flex flex-col items-start gap-4 rounded-3xl bg-[#0f0f1b] p-6 text-white transition-all hover:bg-[#161629] border border-white/5 w-full max-w-sm">
+  <div className="flex flex-col items-start gap-4  rounded-3xl bg-[#0c0c15] p-6 text-white transition-all hover:bg-[#161629] border border-white/5 w-full max-w-sm" onClick={()=>routeToFlash(card.flashcardID)}>
      
       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#2b251a]">
         <Book size={24} className="text-yellow-400" />

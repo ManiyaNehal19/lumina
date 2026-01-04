@@ -5,7 +5,7 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 export async function POST(req: Request) {
   try {
-    const { topic } = await req.json();
+    const { topic, no_of_card } = await req.json();
 
     if (!topic) {
       return NextResponse.json({ error: "Topic is required" }, { status: 400 });
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
 
     const result = await ai.models.generateContent({
       model: "gemini-2.5-flash",
-      contents: `Generate 15 flashcards about ${topic} in JSON format: [{front: string, back: string}]`,
+      contents: `Generate ${no_of_card} flashcards about ${topic} in JSON format: [{front: string, back: string}]`,
     });
 
     const candidate = result.candidates?.[0];

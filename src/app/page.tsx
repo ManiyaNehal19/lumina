@@ -16,6 +16,7 @@ export default async function Home() {
   };
   return (
     <div className="w-full">
+      
       <AInput userId= {userData}/>
       <Deck userId={userData}/>
     </div>
