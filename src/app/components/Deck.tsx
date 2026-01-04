@@ -21,7 +21,6 @@ const Deck = ({ userId }: { userId: UserData }) => {
                 fetchedCards.forEach((deck: flashcard) => {
                     total += deck.content.length;
                 });
-                setNoCardLen(total);
 
             } catch (error) {
                 console.error("Error fetching cards:", error);
