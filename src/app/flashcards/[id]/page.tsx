@@ -54,6 +54,12 @@ const Page = () => {
   return (
     <div className="flex flex-col items-center justify-center h-full gap-4 pb-2">
       <p className="text-gray-400">Card {currentIndex + 1} of {cards.length}</p>
+        <div className='w-3/4 bg-gray-800 h-1.5 rounded-full overflow-hidden'> 
+        <div 
+          className="bg-[#4ade80] h-full transition-all duration-300 ease-out"
+          style={{ width: `${((currentIndex + 1) / cards.length) * 100}%` }}
+        >{((currentIndex + 1) / cards.length) * 100}%</div>
+      </div>
 
       <div>
         <CardFlip 
@@ -78,6 +84,7 @@ const Page = () => {
           Next
         </button>
       </div>
+      
     </div>
   )
 }

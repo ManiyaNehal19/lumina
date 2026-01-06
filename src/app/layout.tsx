@@ -34,7 +34,7 @@ async function Sidebar() {
   const { userId } = await auth();
 
   return (
-    <nav className='w-fit p-5 h-full bg-[#111120] flex flex-col justify-center gap-10 border-r border-white/5'>
+    <nav className='w-fit p-5 h-full bg-[#111120]  flex flex-col justify-center gap-10 border-r border-white/5'>
       <Link href="/" className="group">
            <LayoutDashboard size={32} className='text-[#4ade80] transition-transform group-hover:scale-110' />
       </Link>

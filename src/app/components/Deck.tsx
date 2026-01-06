@@ -34,7 +34,7 @@ const Deck = ({ userId }: { userId: UserData }) => {
             <div className='text-white flex items-center justify-between'>
                 <h2 className='text-4xl text-gray-200 font-bold'>Your Recent Deck</h2>
                 
-                <Link href="/alldecks"  className='text-[#4ade80] underline'>View All</Link>
+                <Link href={`/alldecks/${userId.id}`}  className='text-[#4ade80] underline'>View All</Link>
                 
             </div>
             <div className='w-full mt-6 grid grid-cols-4 gap-4'>

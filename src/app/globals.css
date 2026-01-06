@@ -17,5 +17,8 @@
 
 body {
   background: radial-gradient(circle at top center, #1e1b4b 0%, #0f0d21 100%);
+  background-attachment: fixed; 
+  background-repeat: no-repeat;
   min-height: 100vh;
+  margin: 0;
 }
