@@ -8,6 +8,8 @@ import { flashcard } from '../..'
 const Page = () => {
     const [cards, setCards] = useState<flashcard[]>([]);
     const [sortBy, setSortBy] = useState<string>("date-asc");
+    const [loading, setLoading] = useState<boolean>(true);
+    
     
     const params = useParams();
     const id = params.id;
@@ -15,6 +17,7 @@ const Page = () => {
     useEffect(() => {
         const getCard = async () => {
             if (!id) return;
+            setLoading(true);
 
             try {
                 const response = await axios.get("/api/allcard", { params: { id } });
@@ -22,6 +25,8 @@ const Page = () => {
                 setCards(fetchedCards);
             } catch (error) {
                 console.error("Error fetching cards:", error);
+            }finally {
+                setLoading(false);
             }
         };
 
@@ -76,7 +81,16 @@ const Page = () => {
                     <option value="topic-desc">Topic: Z to A</option>
                 </select>
             </div>
-            
+            {loading ? (
+                <div className='w-full mt-12 flex flex-col items-center justify-center gap-4'>
+                    <p className='text-[#c4f8e2] text-xl font-medium animate-pulse'>
+                        Fetching your decks...
+                    </p>
+                    <div className='w-48 h-1 bg-white/10 rounded-full overflow-hidden'>
+                        <div className='h-full bg-[#c4f8e2] animate-[loading_1.5s_ease-in-out_infinite] w-1/2'></div>
+                    </div>
+                </div>
+            ) : (
             <div className='w-full mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
                 {sortedCards.length > 0 ? (
                     sortedCards.map((card) => (
@@ -88,6 +102,7 @@ const Page = () => {
                     </p>
                 )}
             </div>
+        )}
         </div>
     )
 }
