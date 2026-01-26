@@ -51,7 +51,7 @@ const NoSign = () => {
           <div className='p-4 bg-[#c4f8e2]/10 rounded-xl border border-[#c4f8e2]/30 group-hover:bg-[#c4f8e2]/20 transition-colors'>
              <Layout size={32} className='text-[#c4f8e2] drop-shadow-[0_0_8px_rgba(196,248,226,0.8)]' />
           </div>
-          <h4 className='font-bold text-xl'>Clean UI</h4>
+          <h4 className='font-bold text-xl'>Clean and Modern UI</h4>
           <p className='text-gray-400 text-center leading-relaxed'>Focus on your studies with a minimalist and distraction-free interface</p>
         </div>
 
