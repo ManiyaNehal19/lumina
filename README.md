@@ -28,5 +28,4 @@ Access Lumina here: (https://lumina-ten-beta.vercel.app/) 🌐
 - **Database:** MongoDB  
 - **AI Integration:** Gemini API  
 
-git clone https://github.com/your-username/lumina.git
-cd lumina
+
