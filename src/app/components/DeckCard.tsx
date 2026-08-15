@@ -4,7 +4,7 @@ import { Book } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 const DeckCard = ({card}:{card:flashcard}) => {
-  console.log(card);
+
   const date = new Date(card.createdAt);
   const router = useRouter();
   const routeToFlash = (flashId:string)=>{

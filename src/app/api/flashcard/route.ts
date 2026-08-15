@@ -6,7 +6,6 @@ export async function POST(req:Request){
     await connectionToDataBase();
     try {
         const {topic,content, userId} = await req.json();
-        console.log(content, userId);
         const flashcardID = `${userId.id}_${Date.now()}`
         const user = userId.id;
         const append = await Flashcard.create({topic,flashcardID, user, content} );
